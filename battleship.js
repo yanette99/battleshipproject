@@ -3,7 +3,7 @@ var rows = 10;
 var cols = 10;
 var squareSize = 50;
 
-// gets the container element
+// gets the container elementsssssss
 var gameBoardContainer = document.getElementById("gameboard");
 
 // you can use this to convert your letters into numbers for use
