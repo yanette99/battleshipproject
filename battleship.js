@@ -28,7 +28,7 @@ var letterArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 // makes the grid columns and rows
 for (i = 0; i < cols; i++) {
 	for (j = 0; j < rows; j++) {
-,l
+
 		// creates a new div HTML element for each grid square and makes it the right size
 		var square = document.createElement("div");
 		gameBoardContainer.appendChild(square);
@@ -73,7 +73,14 @@ function fireTorpedo() {
 	var userInput = $("#guessInput").val();
 	var rowLetter = userInput.substring(0,1)
 	var column = userInput.substring(1,2)
-  var row = letterConversion [rowLetter]
+  var row = letterConversion[rowLetter]
+	var battleshipGuess = gameBoard[row][column]
+	var divString = "#s" + row + column;
 
+	if(battleshipGuess == 1) {
+		$(divString).css("background-color", "red");
+	} else. {
+		$(divString).css("background-color", "grey");
+	}
 
 }
