@@ -79,7 +79,7 @@ function fireTorpedo() {
 
 	if(battleshipGuess == 1) {
 		$(divString).css("background-color", "red");
-	} else. {
+	} else {
 		$(divString).css("background-color", "grey");
 	}
 
