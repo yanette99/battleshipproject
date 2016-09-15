@@ -1,5 +1,5 @@
-
 // sets grid rows and columns and the size of each square
+var hitCount = 0;
 var rows = 10;
 var cols = 10;
 var squareSize = 50;
@@ -39,7 +39,7 @@ for (i = 0; i < cols; i++) {
 
 		// THIS IS WHERE YOU WILL ADD CODE FOR PART 1 TO ADD TEXT TO EACH SQUARE
 
-		square.textContent =  letterArray[j] + (i + 1) ;
+		square.textContent =  letterArray[j] + (i+1);
 
 
 		// set each grid square's coordinates: multiples of the current row or column number
@@ -66,21 +66,35 @@ var gameBoard = [
 				[1,0,0,0,0,0,0,0,0,0]
 				]
 
+ 	var numberhit = 17;
+   $("#numberhit").text(numberhit + "ships you have not hit");
+
 function fireTorpedo() {
 
 	// Your game logic will go here!
 
-	var userInput = $("#guessInput").val();
+	var userInput = $("#userInput").val();
+	console.log("userInput is " + userInput);
+	var rowBeforeConversion = userInput.substring(0,1);
 	var rowLetter = userInput.substring(0,1)
-	var column = userInput.substring(1,2)
-  var row = letterConversion[rowLetter]
+	var column = userInput.substring(1,2) - 1
+  var row = letterConversion[rowBeforeConversion]
 	var battleshipGuess = gameBoard[row][column]
-	var divString = "#s" + row + column;
+	var myDivString = "s" + row + column;
 
 	if(battleshipGuess == 1) {
-		$(divString).css("background-color", "red");
-	} else {
-		$(divString).css("background-color", "grey");
+			$("#" + myDivString).css("background-color", "red");
+		  hitCount += 1;
+			numberhit -= 1;
+			$("#numberhit").text(numberhit  + "ships you have not hit");
+			console.log(numberhit);
+	 }
+	 else {
+		$("+" + myDivString).css("background-color", "grey");
 	}
-
+	if(hitCount == 17)
+		{
+			$("body").text("YOU SUNK ALL MY SHIPS");
+		}
+			console.log(hitCount);
 }
